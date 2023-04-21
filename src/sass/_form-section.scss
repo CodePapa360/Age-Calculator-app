@@ -38,6 +38,8 @@
       }
 
       .form-input {
+        background-color: var(--white);
+        color: var(--off-black);
         width: 100%;
         padding: 0.4rem;
         border-radius: 5px;
@@ -83,6 +85,10 @@
 
     &:hover {
       background-color: var(--off-black);
+    }
+
+    &:active {
+      background-color: var(--purple);
     }
 
     img {

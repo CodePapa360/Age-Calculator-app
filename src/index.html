@@ -10,9 +10,15 @@
       content="Age Calculator app | Frontend Mentor | Alamin"
     />
 
-    <meta name="description" content="" />
+    <meta
+      name="description"
+      content="Age Calculator app - calculate your age based on your birth date. Input your birth date in the respective fields and get your age in years, months, and days."
+    />
 
-    <meta property="og:description" content="" />
+    <meta
+      property="og:description"
+      content="Age Calculator app - calculate your age based on your birth date. Input your birth date in the respective fields and get your age in years, months, and days."
+    />
 
     <meta
       property="og:image"
@@ -40,7 +46,10 @@
       content="@https://age-calculator-alamin.netlify.app/"
     />
 
-    <meta name="twitter:description" content="" />
+    <meta
+      name="twitter:description"
+      content="Age Calculator app - calculate your age based on your birth date. Input your birth date in the respective fields and get your age in years, months, and days."
+    />
 
     <meta
       name="twitter:image"
@@ -64,6 +73,14 @@
   </head>
   <body>
     <main class="main">
+      <div class="dark-mode-container">
+        <input
+          type="checkbox"
+          class="dark-mode-checkbox"
+          id="dark-mode-checkbox"
+        />
+        <label for="dark-mode-checkbox" class="dark-mode-lebel"></label>
+      </div>
       <section class="input-section">
         <form class="form" action="">
           <div class="inputs-container">
@@ -116,13 +133,13 @@
       <hr />
 
       <section class="output-section">
-        <p class="output-year output"><span>--</span>years</p>
-        <p class="output-month output"><span>--</span>months</p>
-        <p class="output-day output"><span>--</span>days</p>
+        <p class="output-year output"><span>21</span>years</p>
+        <p class="output-month output"><span>6</span>months</p>
+        <p class="output-day output"><span>28</span>days</p>
       </section>
     </main>
 
-    <!-- <footer class="footer">
+    <footer class="footer">
       <div class="attribution-wrapper">
         <p class="attribution">
           Coded by
@@ -142,6 +159,6 @@
           >
         </p>
       </div>
-    </footer> -->
+    </footer>
   </body>
 </html>
