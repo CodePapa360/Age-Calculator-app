@@ -53,7 +53,7 @@ Users should be able to:
 - Clone this repo:
 
 ```sh
-git clone https://github.com/CodePapa360/Age-Calculator-App.git
+git clone https://github.com/CodePapa360/Age-Calculator-app.git
 ```
 
 - Install dependencies:
@@ -95,4 +95,4 @@ I would like to express my gratitude to Frontend Mentor for providing this proje
 
 ## License
 
-This project is licensed under the [MIT](https://github.com/CodePapa360/Age-Calculator-App/blob/main/LICENSE.md) license, which means you can use, modify, and distribute the code as you wish. If you have any questions or feedback, feel free to reach out. Thank you for considering my code!
+This project is licensed under the [MIT](https://github.com/CodePapa360/Age-Calculator-app/blob/main/LICENSE.md) license, which means you can use, modify, and distribute the code as you wish. If you have any questions or feedback, feel free to reach out. Thank you for considering my code!

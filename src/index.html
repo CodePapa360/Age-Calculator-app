@@ -1,37 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Age calculator app</title>
+    <!--  -->
+    <meta
+      property="og:title"
+      content="Age Calculator app | Frontend Mentor | Alamin"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <meta name="description" content="" />
 
-  Day
-  DD
+    <meta property="og:description" content="" />
 
-  Month
-  MM
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/CodePapa360/Age-Calculator-app/main/screenshots/age-calculator-app-screenshot-compared.png"
+    />
 
-  Year
-  YYYY
+    <meta
+      property="og:url"
+      content="https://age-calculator-alamin.netlify.app/"
+    />
 
-  -- years
-  -- months
-  -- days
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+    <meta name="author" content="Alamin | CodePapa360" />
+
+    <meta name="keywords" content="CodePapa360, Alamin" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta
+      name="twitter:title"
+      content="Age Calculator app | Frontend Mentor | Alamin"
+    />
+
+    <meta
+      name="twitter:site"
+      content="@https://age-calculator-alamin.netlify.app/"
+    />
+
+    <meta name="twitter:description" content="" />
+
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/CodePapa360/Age-Calculator-app/main/screenshots/age-calculator-app-screenshot-compared.png"
+    />
+
+    <meta
+      name="twitter:image:alt"
+      content="Age Calculator app | Frontend Mentor | Alamin"
+    />
+    <!--  -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Age Calculator app | Frontend Mentor | Alamin</title>
+  </head>
+  <body>
+    <main class="main">
+      <section class="input-section">
+        <form class="form" action="">
+          <div class="inputs-container">
+            <div class="input-wrapper">
+              <label class="form-label" for="day">Day</label>
+              <input
+                class="form-input"
+                type="number"
+                name="Day"
+                id="day"
+                placeholder="DD"
+              />
+              <p class="error-message"></p>
+            </div>
+
+            <div class="input-wrapper">
+              <label class="form-label" for="month">Month</label>
+              <input
+                class="form-input"
+                type="number"
+                name="Month"
+                id="month"
+                placeholder="MM"
+              />
+              <p class="error-message"></p>
+            </div>
+
+            <div class="input-wrapper">
+              <label class="form-label" for="year">Year</label>
+              <input
+                class="form-input"
+                type="number"
+                name="Year"
+                id="year"
+                placeholder="YYY"
+              />
+              <p class="error-message"></p>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <img
+              src="./assets/images/icon-arrow.svg"
+              alt="Submit button icon"
+            />
+          </button>
+        </form>
+      </section>
+
+      <hr />
+
+      <section class="output-section">
+        <p class="output-year output"><span>--</span>years</p>
+        <p class="output-month output"><span>--</span>months</p>
+        <p class="output-day output"><span>--</span>days</p>
+      </section>
+    </main>
+
+    <!-- <footer class="footer">
+      <div class="attribution-wrapper">
+        <p class="attribution">
+          Coded by
+          <a
+            class="attb-link"
+            href="https://twitter.com/CodePapa360"
+            target="_blank"
+            >Alamin</a
+          >
+          <br />
+          Challenge by
+          <a
+            class="attb-link attb-fem"
+            href="https://www.frontendmentor.io/profile/CodePapa360"
+            target="_blank"
+            >Frontend Mentor</a
+          >
+        </p>
+      </div>
+    </footer> -->
+  </body>
 </html>

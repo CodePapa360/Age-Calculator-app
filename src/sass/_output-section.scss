@@ -1,0 +1,20 @@
+.output-section {
+  margin-top: 3rem;
+
+  @media screen and (min-width: $bp-medium) {
+    margin-top: 2rem;
+  }
+  .output {
+    font-size: 3rem;
+    font-size: clamp(2rem, 13vw, 4rem);
+    line-height: 1.1;
+    font-weight: 800;
+    color: var(--off-black);
+    font-style: italic;
+
+    span {
+      color: var(--purple);
+      margin-right: 10px;
+    }
+  }
+}
