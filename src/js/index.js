@@ -10,6 +10,8 @@ const outputDay = document.getElementById("render-output-day");
 const outputMonth = document.getElementById("render-output-month");
 const outputYear = document.getElementById("render-output-year");
 
+const extreamError = document.getElementById("extream-error");
+
 //Dark mode veriables
 const darkModeToggle = document.getElementById("dark-mode-checkbox");
 const root = document.documentElement;
@@ -28,6 +30,7 @@ darkModeToggle.addEventListener("change", darkMode);
 window.addEventListener("load", darkMode);
 //////////////////////////////////
 
+//Validation funtions
 const validateYear = function (year) {
   const currentYear = new Date().getFullYear();
   return year > 0 && year <= currentYear;
@@ -41,78 +44,85 @@ const validateDay = function (day, month, year) {
   return day >= 1 && day <= lastDayOfMonth;
 };
 
+///////////////
+//Error output
+const renderError = function (status, element) {
+  const msgError = element.nextElementSibling;
+  const fieldName = element.name;
+
+  switch (status) {
+    case "empty":
+      msgError.textContent = `${fieldName} cannot be empty`;
+      element.style.borderColor = "var(--light-red)";
+      break;
+    case "invalid":
+      msgError.textContent = `Must be a valid ${fieldName.toLowerCase()}`;
+      element.style.borderColor = "var(--light-red)";
+      break;
+    case "future":
+      msgError.textContent = "Must be in the past";
+      element.style.borderColor = "var(--light-red)";
+      break;
+    default:
+      msgError.textContent = "";
+      element.style.borderColor = null;
+  }
+};
+//////////////////////
 inputYear.addEventListener("input", function () {
   let inputValue = this.value;
-  const msgError = this.nextElementSibling;
   const currentYear = new Date().getFullYear();
+  extreamError.textContent = null;
 
   if (inputValue === "") {
-    msgError.textContent = "Year can not be empty";
-    this.style.borderColor = "var(--light-red)";
+    renderError("empty", this);
   } else if (inputValue < 1) {
-    msgError.textContent = "Must be a valid year";
-    this.style.borderColor = "var(--light-red)";
+    renderError("invalid", this);
   } else if (inputValue > currentYear) {
-    msgError.textContent = "Must be in the past";
-    this.style.borderColor = "var(--light-red)";
+    renderError("future", this);
   } else {
-    msgError.textContent = "";
-    this.style.borderColor = null;
+    renderError("", this);
   }
 });
 
 inputMonth.addEventListener("input", function () {
   let inputValue = this.value;
-  const msgError = this.nextElementSibling;
   const day = inputDay.value;
-  const msgErrorDay = inputDay.nextElementSibling;
   const lastDayOfMonth = new Date(
     inputYear.value,
     inputMonth.value,
     0
   ).getDate();
+  extreamError.textContent = null;
 
   if (inputValue === "") {
-    msgError.textContent = "Month can not be empty";
-    this.style.borderColor = "var(--light-red)";
-  } else if (inputValue < 1) {
-    msgError.textContent = "Must be a valid month";
-    this.style.borderColor = "var(--light-red)";
+    renderError("empty", this);
+  } else if (inputValue < 1 || inputValue > 12) {
+    renderError("invalid", this);
   } else if (day > lastDayOfMonth) {
-    msgErrorDay.textContent = "Must be a valid day";
-    inputDay.style.borderColor = "var(--light-red)";
-  } else if (inputValue > 12) {
-    msgError.textContent = "Must be a valid month";
-    this.style.borderColor = "var(--light-red)";
+    renderError("invalid", inputDay);
   } else {
-    msgError.textContent = "";
-    this.style.borderColor = null;
-    inputDay.style.borderColor = null;
-    msgErrorDay.textContent = "";
+    renderError("", this);
+    renderError("", inputDay);
   }
 });
 
 inputDay.addEventListener("input", function () {
   let inputValue = this.value;
-  const msgError = this.nextElementSibling;
   const lastDayOfMonth = new Date(
     inputYear.value,
     inputMonth.value,
     0
   ).getDate();
 
+  extreamError.textContent = null;
+
   if (inputValue === "") {
-    msgError.textContent = "Day can not be empty";
-    this.style.borderColor = "var(--light-red)";
-  } else if (inputValue > lastDayOfMonth) {
-    msgError.textContent = "Must be a valid day";
-    this.style.borderColor = "var(--light-red)";
-  } else if (inputValue < 1) {
-    msgError.textContent = "Must be a valid day";
-    this.style.borderColor = "var(--light-red)";
+    renderError("empty", this);
+  } else if (inputValue > lastDayOfMonth || inputValue < 1) {
+    renderError("invalid", this);
   } else {
-    msgError.textContent = "";
-    this.style.borderColor = null;
+    renderError("", this);
   }
 });
 
@@ -128,16 +138,19 @@ form.addEventListener("submit", function (e) {
   );
 
   if (validDay && validYear && validMonth) {
-    const d = inputDay.value;
-    const m = inputMonth.value - 1;
-    const y = inputYear.value;
-    const birth = new Date(y, m, d);
-
     const today = new Date();
+    const birth = new Date(
+      `${inputYear.value}-${inputMonth.value}-${inputDay.value}`
+    );
 
     let years = today.getFullYear() - birth.getFullYear();
     let months = today.getMonth() - birth.getMonth();
     let days = today.getDate() - birth.getDate();
+
+    if (birth > today) {
+      return (extreamError.textContent =
+        "Date of birth can't be in the future");
+    }
 
     if (months < 0 || (months === 0 && days < 0)) {
       years--;
