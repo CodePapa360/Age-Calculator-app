@@ -27,20 +27,6 @@ const darkMode = function () {
 darkModeToggle.addEventListener("change", darkMode);
 window.addEventListener("load", darkMode);
 //////////////////////////////////
-const lastDayOfMonth = [
-  31, // January
-  28, // February (not considering leap years)
-  31, // March
-  30, // April
-  31, // May
-  30, // June
-  31, // July
-  31, // August
-  30, // September
-  31, // October
-  30, // November
-  31, // December
-];
 
 const validateYear = function (year) {
   const currentYear = new Date().getFullYear();
@@ -50,7 +36,6 @@ const validateYear = function (year) {
 const validateMonth = function (month) {
   return month >= 1 && month <= 12;
 };
-
 const validateDay = function (day, month, year) {
   const lastDayOfMonth = new Date(year, month, 0).getDate();
   return day >= 1 && day <= lastDayOfMonth;
@@ -81,6 +66,11 @@ inputMonth.addEventListener("input", function () {
   const msgError = this.nextElementSibling;
   const day = inputDay.value;
   const msgErrorDay = inputDay.nextElementSibling;
+  const lastDayOfMonth = new Date(
+    inputYear.value,
+    inputMonth.value,
+    0
+  ).getDate();
 
   if (inputValue === "") {
     msgError.textContent = "Month can not be empty";
@@ -88,7 +78,7 @@ inputMonth.addEventListener("input", function () {
   } else if (inputValue < 1) {
     msgError.textContent = "Must be a valid month";
     this.style.borderColor = "var(--light-red)";
-  } else if (day > lastDayOfMonth[inputValue - 1]) {
+  } else if (day > lastDayOfMonth) {
     msgErrorDay.textContent = "Must be a valid day";
     inputDay.style.borderColor = "var(--light-red)";
   } else if (inputValue > 12) {
@@ -105,12 +95,16 @@ inputMonth.addEventListener("input", function () {
 inputDay.addEventListener("input", function () {
   let inputValue = this.value;
   const msgError = this.nextElementSibling;
-  const monthInp = inputMonth.value - 1;
+  const lastDayOfMonth = new Date(
+    inputYear.value,
+    inputMonth.value,
+    0
+  ).getDate();
 
   if (inputValue === "") {
     msgError.textContent = "Day can not be empty";
     this.style.borderColor = "var(--light-red)";
-  } else if (inputValue > lastDayOfMonth[monthInp]) {
+  } else if (inputValue > lastDayOfMonth) {
     msgError.textContent = "Must be a valid day";
     this.style.borderColor = "var(--light-red)";
   } else if (inputValue < 1) {
