@@ -68,12 +68,13 @@ const renderError = function (status, element) {
       element.style.borderColor = null;
   }
 };
+
 //////////////////////
 inputYear.addEventListener("input", function () {
   let inputValue = this.value;
   const currentYear = new Date().getFullYear();
-  extreamError.textContent = null;
 
+  extreamError.textContent = null;
   if (inputValue === "") {
     renderError("empty", this);
   } else if (inputValue < 1) {
@@ -174,5 +175,9 @@ form.addEventListener("submit", function (e) {
     outputYear.textContent = years;
     outputMonth.textContent = months;
     outputDay.textContent = days;
+
+    inputDay.value = "";
+    inputMonth.value = "";
+    inputYear.value = "";
   }
 });
