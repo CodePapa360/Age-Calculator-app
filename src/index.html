@@ -72,15 +72,15 @@
     <title>Age Calculator app | Frontend Mentor | Alamin</title>
   </head>
   <body>
+    <div class="dark-mode-container">
+      <input
+        type="checkbox"
+        class="dark-mode-checkbox"
+        id="dark-mode-checkbox"
+      />
+      <label for="dark-mode-checkbox" class="dark-mode-lebel"></label>
+    </div>
     <main class="main">
-      <div class="dark-mode-container">
-        <input
-          type="checkbox"
-          class="dark-mode-checkbox"
-          id="dark-mode-checkbox"
-        />
-        <label for="dark-mode-checkbox" class="dark-mode-lebel"></label>
-      </div>
       <section class="input-section">
         <form class="form" action="">
           <div class="inputs-container">
@@ -133,9 +133,15 @@
       <hr />
 
       <section class="output-section">
-        <p class="output-year output"><span>21</span>years</p>
-        <p class="output-month output"><span>6</span>months</p>
-        <p class="output-day output"><span>28</span>days</p>
+        <p class="output-year output">
+          <span id="render-output-year">--</span>years
+        </p>
+        <p class="output-month output">
+          <span id="render-output-month">--</span>months
+        </p>
+        <p class="output-day output">
+          <span id="render-output-day">--</span>days
+        </p>
       </section>
     </main>
 

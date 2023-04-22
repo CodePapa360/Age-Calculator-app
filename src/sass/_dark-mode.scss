@@ -1,7 +1,6 @@
 :root.dark-mode {
   // Primary
-  --purple: hsl(259, 100%, 65%);
-  --light-red: hsl(0, 100%, 67%);
+  --light-red: hsl(0, 72%, 55%);
 
   // Neutral
   --white: hsl(249, 22%, 12%);
@@ -12,9 +11,9 @@
 }
 
 .dark-mode-container {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-bottom: 1rem;
 
   .dark-mode-checkbox {
     display: none;
