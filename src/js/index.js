@@ -16,34 +16,6 @@ const extreamError = document.getElementById("extream-error");
 const darkModeToggle = document.getElementById("dark-mode-checkbox");
 const root = document.documentElement;
 
-//////////////////////////////////
-//dark mode feature
-const darkMode = function () {
-  if (darkModeToggle.checked === true) {
-    root.classList.add("dark-mode");
-  } else {
-    root.classList.remove("dark-mode");
-  }
-};
-
-darkModeToggle.addEventListener("change", darkMode);
-window.addEventListener("load", darkMode);
-//////////////////////////////////
-
-//Validation funtions
-const validateYear = function (year) {
-  const currentYear = new Date().getFullYear();
-  return year > 0 && year <= currentYear;
-};
-
-const validateMonth = function (month) {
-  return month >= 1 && month <= 12;
-};
-const validateDay = function (day, month, year) {
-  const lastDayOfMonth = new Date(year, month, 0).getDate();
-  return day >= 1 && day <= lastDayOfMonth;
-};
-
 ///////////////
 //Error output
 const renderError = function (status, element) {
@@ -69,76 +41,108 @@ const renderError = function (status, element) {
   }
 };
 
-//////////////////////
-inputYear.addEventListener("input", function () {
-  let inputValue = this.value;
+//Validation funtions
+//////////////////////////
+/// Year validation
+const validateYear = function (element) {
+  let isValid = true;
+  const inputValue = element.value;
   const currentYear = new Date().getFullYear();
 
-  extreamError.textContent = null;
   if (inputValue === "") {
-    renderError("empty", this);
-  } else if (inputValue < 1) {
-    renderError("invalid", this);
+    renderError("empty", element);
+    isValid = false;
+  } else if (inputValue < 1000) {
+    renderError("invalid", element);
+    isValid = false;
   } else if (inputValue > currentYear) {
-    renderError("future", this);
+    renderError("future", element);
+    isValid = false;
   } else {
-    renderError("", this);
+    renderError("", element);
+    isValid = true;
   }
-});
 
-inputMonth.addEventListener("input", function () {
-  let inputValue = this.value;
+  return isValid;
+};
+
+//////////////////////////
+/// Month validation
+const validateMonth = function (element) {
+  let isValid = true;
+  const inputValue = element.value;
   const day = inputDay.value;
   const lastDayOfMonth = new Date(
     inputYear.value,
     inputMonth.value,
     0
   ).getDate();
-  extreamError.textContent = null;
 
   if (inputValue === "") {
-    renderError("empty", this);
+    renderError("empty", element);
+    isValid = false;
   } else if (inputValue < 1 || inputValue > 12) {
-    renderError("invalid", this);
+    renderError("invalid", element);
+    isValid = false;
   } else if (day > lastDayOfMonth) {
     renderError("invalid", inputDay);
+    isValid = false;
   } else {
-    renderError("", this);
+    renderError("", element);
     renderError("", inputDay);
+    isValid = true;
   }
-});
 
-inputDay.addEventListener("input", function () {
-  let inputValue = this.value;
+  return isValid;
+};
+
+const validateDay = function (element) {
+  let isValid = true;
+  const inputValue = element.value;
   const lastDayOfMonth = new Date(
     inputYear.value,
     inputMonth.value,
     0
   ).getDate();
 
-  extreamError.textContent = null;
-
   if (inputValue === "") {
-    renderError("empty", this);
+    renderError("empty", element);
+    isValid = false;
   } else if (inputValue > lastDayOfMonth || inputValue < 1) {
-    renderError("invalid", this);
+    renderError("invalid", element);
+    isValid = false;
   } else {
-    renderError("", this);
+    renderError("", element);
+    isValid = true;
   }
+
+  return isValid;
+};
+
+//////////////////////
+inputYear.addEventListener("input", function () {
+  validateYear(this);
+  extreamError.textContent = null;
+});
+
+inputMonth.addEventListener("input", function () {
+  validateMonth(this);
+  extreamError.textContent = null;
+});
+
+inputDay.addEventListener("input", function () {
+  validateDay(this);
+  extreamError.textContent = null;
 });
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const validYear = validateYear(inputYear.value);
-  const validMonth = validateMonth(inputMonth.value);
-  const validDay = validateDay(
-    inputDay.value,
-    inputMonth.value,
-    inputYear.value
-  );
-
-  if (validDay && validYear && validMonth) {
+  if (
+    validateDay(inputDay) &&
+    validateMonth(inputMonth) &&
+    validateYear(inputYear)
+  ) {
     const today = new Date();
     const birth = new Date(
       `${inputYear.value}-${inputMonth.value}-${inputDay.value}`
@@ -172,12 +176,42 @@ form.addEventListener("submit", function (e) {
       }
     }
 
-    outputYear.textContent = years;
-    outputMonth.textContent = months;
-    outputDay.textContent = days;
+    outputYear.style.transform = "scale(.5)";
+    outputMonth.style.transform = "scale(.5)";
+    outputDay.style.transform = "scale(.5)";
+    outputYear.style.opacity = "0";
+    outputMonth.style.opacity = "0";
+    outputDay.style.opacity = "0";
 
-    inputDay.value = "";
-    inputMonth.value = "";
-    inputYear.value = "";
+    setTimeout(() => {
+      outputYear.textContent = years;
+      outputMonth.textContent = months;
+      outputDay.textContent = days;
+
+      outputYear.style.transform = "scale(1)";
+      outputMonth.style.transform = "scale(1)";
+      outputDay.style.transform = "scale(1)";
+
+      outputYear.style.opacity = "1";
+      outputMonth.style.opacity = "1";
+      outputDay.style.opacity = "1";
+    }, 300);
+
+    // inputDay.value = "";
+    // inputMonth.value = "";
+    // inputYear.value = "";
   }
 });
+
+//////////////////////////////////
+//dark mode feature
+const darkMode = function () {
+  if (darkModeToggle.checked === true) {
+    root.classList.add("dark-mode");
+  } else {
+    root.classList.remove("dark-mode");
+  }
+};
+
+darkModeToggle.addEventListener("change", darkMode);
+window.addEventListener("load", darkMode);
