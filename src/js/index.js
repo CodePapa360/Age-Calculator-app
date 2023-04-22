@@ -197,9 +197,9 @@ form.addEventListener("submit", function (e) {
       outputDay.style.opacity = "1";
     }, 300);
 
-    // inputDay.value = "";
-    // inputMonth.value = "";
-    // inputYear.value = "";
+    inputDay.value = "";
+    inputMonth.value = "";
+    inputYear.value = "";
   }
 });
 
