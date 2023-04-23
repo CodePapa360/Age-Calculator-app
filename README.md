@@ -49,6 +49,12 @@ Users should be able to:
 
 ## What I learned
 
+During the development of this project, I had the opportunity to learn a lot about planning and organization. I realized that without a clear plan, it can be easy to lose track of the big picture and get bogged down in the details. By breaking the project down into smaller, more manageable tasks, I was able to focus on one thing at a time and make steady progress towards the end goal.
+
+In addition to planning, I also learned the importance of writing clean, efficient code. At first, I was focused on getting the code to work, but as I went along, I began to see the value in writing code that is easy to read and understand. Adding comments to explain what each function and block of code does is especially helpful, not just for myself, but for anyone who may work with the code in the future.
+
+Finally, working on this project helped me to develop my problem-solving skills. There were several instances where I encountered roadblocks and had to come up with better solutions to overcome them. This required me to think outside the box and consider new approaches to solving problems. By pushing myself to think differently, I was able to develop a more versatile problem-solving skillset that I can apply to future projects. Overall, this project was a valuable learning experience that taught me important skills.
+
 ## Installation
 
 - Clone this repo:
@@ -92,7 +98,7 @@ Give a ⭐️ if you liked this project!
 
 ## Acknowledgments
 
-I would like to express my gratitude to Frontend Mentor for providing this project idea and design. Their platform is an excellent resource for web developers looking to improve their skills.
+Special thanks to Frontend Mentor for providing such an amazing platform to practice and improve my frontend skills. The challenges and projects available on the website were both fun and challenging, and helped me learn a lot in a short amount of time.
 
 ## License
 
