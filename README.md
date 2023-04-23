@@ -13,7 +13,7 @@
 </div>
 
 <p align="center">
-  
+  A simple web application built with HTML, CSS, and JavaScript that calculates the age of a user based on their birthdate and the current date.
 </p>
 
 <a align="center" href="https://age-calculator-alamin.netlify.app/">
