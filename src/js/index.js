@@ -158,7 +158,6 @@ inputDay.addEventListener("input", () => {
 //////////////////////////////
 ////// Form submission //////
 /////////////////////////////
-
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -213,8 +212,12 @@ form.addEventListener("submit", function (e) {
   }
 
   // Scaling down and hiding the output elements
-  [outputYear, outputMonth, outputDay].forEach((output) => {
-    output.style.transform = "scale(.5)";
+  [
+    outputYear.parentElement,
+    outputMonth.parentElement,
+    outputDay.parentElement,
+  ].forEach((output) => {
+    output.style.transform = "scale(.8)";
     output.style.opacity = "0";
   });
 
@@ -225,7 +228,11 @@ form.addEventListener("submit", function (e) {
     outputMonth.textContent = months;
     outputDay.textContent = days;
 
-    [outputYear, outputMonth, outputDay].forEach((output) => {
+    [
+      outputYear.parentElement,
+      outputMonth.parentElement,
+      outputDay.parentElement,
+    ].forEach((output) => {
       output.style.transform = "scale(1)";
       output.style.opacity = "1";
     });

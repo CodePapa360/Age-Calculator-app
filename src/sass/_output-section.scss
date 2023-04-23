@@ -21,14 +21,15 @@
     font-weight: 800;
     color: var(--off-black);
     font-style: italic;
+    transform: scale(1);
+    transform-origin: left;
+    opacity: 1;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
     span {
       display: inline-block;
       color: var(--purple);
       margin-right: 10px;
-      transform: scale(1);
-      opacity: 1;
-      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     }
   }
 }
